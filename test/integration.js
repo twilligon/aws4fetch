@@ -274,7 +274,7 @@ https.globalAgent.maxSockets = 10
     test.sessionToken = process.env.AWS_SESSION_TOKEN
   })
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security'] })
 
   try {
     const signed = await getSignedTests(tests, browser)

@@ -7,7 +7,7 @@ const rollup = require('rollup')
   const bundle = await rollup.rollup({ input: path.join(__dirname, 'suite.js') })
   const { output: [{ code }] } = await bundle.generate({ format: 'es', intro: `self.AWS_FIXTURES = ${JSON.stringify(awsFixtures())};` })
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-web-security'] })
   const page = await browser.newPage()
   await page.goto('file:///dev/null')
 

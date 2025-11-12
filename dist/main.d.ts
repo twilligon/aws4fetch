@@ -33,7 +33,7 @@ export class AwsClient {
             allHeaders?: boolean;
             singleEncode?: boolean;
         };
-    }) | null | undefined): Promise<Request>;
+    }) | null): Promise<Request>;
     fetch(input: Request | {
         toString: () => string;
     }, init?: (RequestInit & {
@@ -50,7 +50,7 @@ export class AwsClient {
             allHeaders?: boolean;
             singleEncode?: boolean;
         };
-    }) | null | undefined): Promise<Response>;
+    }) | null): Promise<Response>;
 }
 export class AwsV4Signer {
     constructor({ method, url, headers, body, accessKeyId, secretAccessKey, sessionToken, service, region, cache, datetime, signQuery, appendSessionToken, allHeaders, singleEncode }: {
